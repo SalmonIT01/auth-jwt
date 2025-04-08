@@ -15,7 +15,7 @@ git clone https://github.com/SalmonIT01/auth-jwt.git
 cd auth-jwt
 ```
 
-2. สร้างไฟล์ `.env` (ตัวอย่าง):
+2. สร้างไฟล์ `.env` (ตัวอย่าง): ******ไม่ต้องทำก็ได้********
 ```bash
 cp .env.example .env
 ```
