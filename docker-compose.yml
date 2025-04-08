@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # บริการ MongoDB
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGO_DB:-auth_db}
+    networks:
+      - app-network
+
+  # บริการ API ของเรา
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: auth-api
+    restart: always
+    ports:
+      - "${PORT:-8080}:8080"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=${MONGO_URI:-mongodb://mongo:27017}
+      - MONGO_DB=${MONGO_DB:-auth_db}
+      - JWT_SECRET=${JWT_SECRET:-your_secret_key_change_in_production}
+      - PORT=${PORT:-8080}
+    networks:
+      - app-network
+
+# ตั้งค่า volumes
+volumes:
+  mongo_data:
+    driver: local
+
+# ตั้งค่า networks
+networks:
+  app-network:
+    driver: bridge
