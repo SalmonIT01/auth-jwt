@@ -12,7 +12,7 @@ API สำหรับระบบยืนยันตัวตนใช้ JWT
 1. Clone โปรเจคนี้:
 ```bash
 git clone https://github.com/SalmonIT01/auth-jwt.git
-cd 
+cd auth-jwt
 ```
 
 2. สร้างไฟล์ `.env` (ตัวอย่าง):
