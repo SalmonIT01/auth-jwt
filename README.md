@@ -11,7 +11,7 @@ API สำหรับระบบยืนยันตัวตนใช้ JWT
 
 1. Clone โปรเจคนี้:
 ```bash
-git clone 
+git clone https://github.com/SalmonIT01/auth-jwt.git
 cd 
 ```
 
