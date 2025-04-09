@@ -8,7 +8,7 @@ RUN apk update && apk add --no-cache git || apt-get update && apt-get install -y
 WORKDIR /app
 
 # คัดลอก go.mod และ go.sum ก่อน
-COPY go.mod go.sum ./
+COPY go.mod go.sum ./ 
 
 # ดาวน์โหลด dependencies
 RUN go mod download
@@ -33,12 +33,6 @@ WORKDIR /root/
 
 # คัดลอกไฟล์ที่ build มาจากขั้นตอนก่อนหน้า
 COPY --from=builder /app/auth-api .
-
-# ตั้งค่า environment variables (ตัวอย่าง)
-ENV MONGO_URI="mongodb://mongo:27017"
-ENV MONGO_DB="auth_db"
-ENV JWT_SECRET="your_secret_key"
-ENV PORT="8080"
 
 # เปิด port
 EXPOSE 8080
